@@ -182,7 +182,6 @@ docker -v
 
 #### **Step 7**: | Master | Worker | - _Install Kubernetes Packages (`kubeadm`, `kubelet`, `kubectl`):_
 ```
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
