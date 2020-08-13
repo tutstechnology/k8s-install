@@ -146,9 +146,6 @@ sudo apt update
 sudo apt -y install docker-ce docker-ce-cli containerd.io
 ```
 
-```
-apt-cache madison docker-ce
-```
 **Result:**
 
 `docker-ce | 5:19.03.12~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`
@@ -167,6 +164,32 @@ sudo apt-get install docker-ce=`<VERSION_STRING>` docker-ce-cli=`<VERSION_STRING
 **Example:**
 ```
 apt-get install docker-ce=5:19.03.12~3-0~ubuntu-focal docker-ce-cli=5:19.03.12~3-0~ubuntu-focal containerd.io
+```
+
+```
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+```
+
+```
+mkdir -p /etc/systemd/system/docker.service.d
+```
+
+```
+systemctl daemon-reload
+systemctl restart docker
+```
+
+```
+apt-cache madison docker-ce
 ```
 
 ```
