@@ -161,12 +161,9 @@ Replace `<VERSION_STRING>` and `<VERSION_STRING>` in the command below
 
 sudo apt-get install docker-ce=`<VERSION_STRING>` docker-ce-cli=`<VERSION_STRING>` containerd.io
 
-**Example:**
 ```
 apt-get install docker-ce=5:19.03.12~3-0~ubuntu-focal docker-ce-cli=5:19.03.12~3-0~ubuntu-focal containerd.io
 ```
-
-
 
 ```
 cat > /etc/docker/daemon.json <<EOF
