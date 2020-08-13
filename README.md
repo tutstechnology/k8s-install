@@ -113,12 +113,7 @@ sudo apt update
 ```
 
 ```
-sudo apt install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
+sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 ```
 
 ```
@@ -130,20 +125,17 @@ sudo apt-key fingerprint 0EBFCD88
 ```
 **The result of the above command should be this:**
 
-_`pub   rsa4096 2017-02-22 [SCEA]`_
+`pub   rsa4096 2017-02-22 [SCEA]`
 
-_`9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88`_
+`9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88`
       
-_`uid           [ unknown] Docker Release (CE deb) <docker@docker.com>`_
+`uid           [ unknown] Docker Release (CE deb) <docker@docker.com>`
 
-_`sub   rsa4096 2017-02-22 [S]`_
+`sub   rsa4096 2017-02-22 [S]`
 
 
 ```
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
 ```
@@ -151,7 +143,7 @@ sudo apt update
 ```
 
 ```
-sudo apt install docker-ce docker-ce-cli containerd.io
+sudo apt -y install docker-ce docker-ce-cli containerd.io
 ```
 
 ```
@@ -159,13 +151,13 @@ apt-cache madison docker-ce
 ```
 **Result:**
 
-_`docker-ce | 5:19.03.12~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`_
+`docker-ce | 5:19.03.12~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`
  
-_`docker-ce | 5:19.03.11~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`_
+`docker-ce | 5:19.03.11~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`
  
 `docker-ce | 5:19.03.10~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`
  
-`docker-ce | 5:19.03.9~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`_
+`docker-ce | 5:19.03.9~3-0~ubuntu-focal | https://download.docker.com/linux/ubuntu focal/stable amd64 Packages`
 
 **IMPORTANT:** 
 Replace `<VERSION_STRING>` and `<VERSION_STRING>` in the command below
