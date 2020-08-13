@@ -207,19 +207,27 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-#### **Step 10**: | Master | - _Cluster K8S configuration. Definition of the `network component` and driver for Kuberntes:_
+#### **Step 10**: | Master | - _Cluster K8S configuration. Definition of the `network component` for Pods Network add-on on Kuberntes:_
 
 **IMPORTANT:** Choose only one of the models below:
 
 Model 1 - Flannel
 ```
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
 ```
 
 Model 2 - WeaveWorks
 ```
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
+
+Model 3 - Calico
+```
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+```
+
+
 
 List podsnetwork:
 ```
