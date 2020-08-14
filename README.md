@@ -212,7 +212,7 @@ sudo apt install -y kubeadm kubelet kubectl kubernetes-cni
 
 #### **Step 8**: | Master | - _Cluster K8S configuration. Definition of the invite and pod network:_
 ```
-kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr=10.244.0.0/16
+kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr=10.244.0.0/16 --service-dns-domain tutstechnology.local
 ```
 **IMPORTANT:** The command above will start the cluster and then display the command line I need to execute on my other nodes.
 NOTE the information to join the Workers servers. 
