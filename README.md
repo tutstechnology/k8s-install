@@ -778,8 +778,10 @@ kubectl create -f [local directory] ../prometheus-service.yaml --namespace=monit
 
 #### **Step 25**: | Master | - _Prometheus Deploy - Verify:_
 
+```
 kubectl get deployments --namespace=monitoring
 kubectl get pods --namespace=monitoring
+```
 
 
 
