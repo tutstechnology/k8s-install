@@ -461,6 +461,7 @@ kubectl top nodes
 kubectl top pods --all-namespaces
 kubectl top pods --all-namespaces --sort-by=memory
 ```
+
 ------
 ### Installation Ambassador Edge Stack:
 
@@ -477,11 +478,111 @@ kubectl -n ambassador wait --for condition=available --timeout=90s deploy -lprod
 kubectl get -n ambassador service ambassador -o "go-template={{range .status.loadBalancer.ingress}}{{or .ip .hostname}}{{end}}"
 ```
 
-
-
-
-
 ------
+### Installation Prometheus Stack:
+
+#### **Step 22**: | Master | - _Prometheus Deploy - Create a Namespace:_
+
+```
+kubectl create namespace monitoring
+```
+
+
+#### **Step 23**: | Master | - _Prometheus Deploy - Create a Files:_
+
+### File creation (1) ### `clusterRole.yaml`:
+```
+nano clusterRole.yaml
+```
+Copy and paste the information below into the file:
+```
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: prometheus
+rules:
+- apiGroups: [""]
+  resources:
+  - nodes
+  - nodes/proxy
+  - services
+  - endpoints
+  - pods
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs: ["get", "list", "watch"]
+- nonResourceURLs: ["/metrics"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: monitoring
+```
+
+
+### File creation (2) ### `clusterRole.yaml`:
+```
+nano clusterRole.yaml
+```
+Copy and paste the information below into the file:
+```
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: prometheus
+rules:
+- apiGroups: [""]
+  resources:
+  - nodes
+  - nodes/proxy
+  - services
+  - endpoints
+  - pods
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs: ["get", "list", "watch"]
+- nonResourceURLs: ["/metrics"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: monitoring
+```
+
+
+
+
+
+
+Offline Deploy:
+```
+kubectl apply -f [local directory] ../createuseradmin-user.yaml
+kubectl apply -f [local directory] ../dashboard-adminuser.yaml
+```
 
 
 
