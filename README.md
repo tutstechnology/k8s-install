@@ -490,7 +490,7 @@ kubectl create namespace monitoring
 
 #### **Step 23**: | Master | - _Prometheus Deploy - Create a Files:_
 
-### File creation (1) ### `clusterRole.yaml`:
+**File creation (1)** `clusterRole.yaml`:
 ```
 nano clusterRole.yaml
 ```
@@ -532,7 +532,7 @@ subjects:
 ```
 
 
-### File creation (2) ### `clusterRole.yaml`:
+**File creation (2)** `clusterRole.yaml`:
 ```
 nano clusterRole.yaml
 ```
