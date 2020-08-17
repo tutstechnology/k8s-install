@@ -479,7 +479,7 @@ kubectl get -n ambassador service ambassador -o "go-template={{range .status.loa
 ```
 
 ------
-### Installation Prometheus Stack:
+### Installation Prometheus:
 
 #### **Step 22**: | Master | - _Prometheus Deploy - Create a Namespace:_
 
@@ -766,13 +766,20 @@ spec:
 ```
 
 
+#### **Step 24**: | Master | - _Prometheus Deploy - Deploy Files:_
+
 Offline Deploy:
 ```
-kubectl apply -f [local directory] ../createuseradmin-user.yaml
-kubectl apply -f [local directory] ../dashboard-adminuser.yaml
+kubectl create -f [local directory] ../clusterRole.yaml
+kubectl create -f [local directory] ../config-map.yaml
+kubectl create -f [local directory] ../prometheus-deployment.yaml
+kubectl create -f [local directory] ../prometheus-service.yaml --namespace=monitoring
 ```
 
+#### **Step 24**: | Master | - _Prometheus Deploy - Verify:_
 
+kubectl get deployments --namespace=monitoring
+kubectl get pods --namespace=monitoring
 
 
 
