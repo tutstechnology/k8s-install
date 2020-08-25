@@ -97,7 +97,8 @@ Comment if you have the Swap line on `fstab`:
 ```
 sudo vim /etc/fstab
 ```
-Exemple: **#**/dev/mapper/hakase--labs--vg-swap_1 none            swap    sw              0       0
+Exemple: **#**/swap.img      none    swap    sw      0       0
+
 
 
 #### **Step 5**: | Master | Worker | - _Restart the server:_
