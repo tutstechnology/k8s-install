@@ -1,4 +1,4 @@
-# Install Cluster K8S 
+# Install Cluster K8S on Ubuntu 20.04
 ## (Master and Workers) and services: Docker, Dashboard, Metrics, Ambassador and Prometheus
 
 -----------------------
@@ -59,7 +59,7 @@ lsof -i -P -n | grep LISTEN
 
 **step 20 to step 21 -** _Ambassador installation._
 
-**step 22 to step 25 -** _Prometheus (Building step by step)._
+**step 22 to step 25 -** _Prometheus installation._
 
 -----------------------
 
