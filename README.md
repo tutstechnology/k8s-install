@@ -226,7 +226,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-#### **Step 10**: | Master | - _Cluster K8S configuration. Definition of the `network component` for Pods Network add-on on Kuberntes:_
+#### **Step 10**: | Master | - _Cluster K8S configuration. Definition of the CNI `network component` for Pods Network add-on on Kuberntes:_
 
 **IMPORTANT:** Choose only one of the models below:
 
@@ -236,7 +236,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
 ```
 
-Model 2 - WeaveWorks
+Model 2 - Weave Net
 ```
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
@@ -260,6 +260,14 @@ kubectl get pods -n kube-system
 kubeadm join 10.130.200.25:6443 --token kqbyqy.q6543jyyx6xl84yd \
     --discovery-token-ca-cert-hash sha256:94a749272471966abeb39c7bb74a597603994e091cfda17a1915b1eb72625c2c
 ```
+
+
+If you have not noted the Join command, execute the command below to obtain it:
+
+```
+kubeadm token create --print-join-command
+```
+
 
 #### **Step 12**: | Master | - _Commands to check the nodes/pods:_
 ```
