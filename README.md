@@ -114,10 +114,6 @@ sudo apt update
 ```
 
 ```
-sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-```
-
-```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
@@ -201,11 +197,16 @@ docker -v
 
 #### **Step 7**: | Master | Worker | - _Install Kubernetes Packages (`kubeadm`, `kubelet`, `kubectl`):_
 ```
+sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+
+```
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
 sudo apt install -y kubeadm kubelet kubectl kubernetes-cni
 ```
+
 
 #### **Step 8**: | Master | - _Cluster K8S configuration. Definition of the invite and pod network:_
 ```
